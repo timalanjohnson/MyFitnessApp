@@ -54,6 +54,8 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                 if (insertData == true){
                     Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterUserActivity.this, DashboardActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(RegisterUserActivity.this, "Error registering user.", Toast.LENGTH_SHORT).show();
