@@ -1,13 +1,17 @@
 package com.example.myfitnessapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class register_user extends AppCompatActivity {
+public class RegisterUserActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = RegisterUserActivity.class.getSimpleName();
 
     DatabaseHelper myFitDB;
     Button buttonRegister;
@@ -49,10 +53,10 @@ public class register_user extends AppCompatActivity {
                 boolean insertData = myFitDB.addData(name, email, password, weight, height, target);
 
                 if (insertData == true){
-                    Toast.makeText(register_user.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(register_user.this, "Error registering user.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUserActivity.this, "Error registering user.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
