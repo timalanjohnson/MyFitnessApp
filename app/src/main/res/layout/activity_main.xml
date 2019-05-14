@@ -7,14 +7,59 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:paddingTop="280dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/txtLoginUsernamePrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="180dp"
+            android:text="@string/prompt_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/editTextLoginUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:text=""
+            android:textColor="@color/colorLightGrey"
+            android:textColorHint="@color/colorLightGrey"
+            app:layout_constraintTop_toBottomOf="@+id/txtLoginUsernamePrompt"
+            tools:layout_editor_absoluteX="-8dp" />
+
+        <TextView
+            android:id="@+id/txtLoginPasswordPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/prompt_password"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/editTextLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColor="@color/colorLightGrey"
+            android:textColorHint="@color/colorLightGrey"
+            app:layout_constraintTop_toBottomOf="@+id/txtLoginPasswordPrompt"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
             android:id="@+id/buttonNewLogin"
@@ -22,7 +67,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Login" />
+            android:layout_marginTop="116dp"
+            android:text="Login"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLoginPassword"
+            tools:layout_editor_absoluteX="16dp" />
 
         <Button
             android:id="@+id/buttonNewRegister"
@@ -30,7 +78,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Register" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonNewLogin"
+            app:layout_constraintVertical_bias="0.003"
+            tools:layout_editor_absoluteX="8dp" />
+    </android.support.constraint.ConstraintLayout>
 
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

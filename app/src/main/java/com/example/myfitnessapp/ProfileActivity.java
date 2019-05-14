@@ -25,13 +25,13 @@ public class ProfileActivity extends AppCompatActivity {
         setTitle("Your Profile");
 
         myFitDB = new DatabaseHelper(this);
-        buttonUpdateDetails = (Button)findViewById(R.id.buttonUpdateDetails);
-        editName = (EditText)findViewById(R.id.editName);
-        editEmail = (EditText)findViewById(R.id.editEmail);
-        editPassword = (EditText)findViewById(R.id.editPassword);
-        editWeight = (EditText)findViewById(R.id.editWeight);
-        editHeight = (EditText)findViewById(R.id.editHeight);
-        editTarget = (EditText)findViewById(R.id.editTarget);
+        buttonUpdateDetails = findViewById(R.id.buttonUpdateDetails);
+        editName = findViewById(R.id.editName);
+        editEmail = findViewById(R.id.editEmail);
+        editPassword = findViewById(R.id.editPassword);
+        editWeight = findViewById(R.id.editWeight);
+        editHeight = findViewById(R.id.editHeight);
+        editTarget = findViewById(R.id.editTarget);
 
         // Initialize fields with values from the database
         initValues();
@@ -44,44 +44,35 @@ public class ProfileActivity extends AppCompatActivity {
         buttonUpdateDetails.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(ProfileActivity.this, "Update Details", Toast.LENGTH_SHORT).show();
-                /*
-                String name = editName.getText().toString();
-                String email = editEmail.getText().toString();
-                String password = editPassword.getText().toString();
-                String weight = editWeight.getText().toString();
-                String height = editHeight.getText().toString();
-                String target = editTarget.getText().toString();
 
-                boolean insertData = myFitDB.addData(name, email, password, weight, height, target);
+                // Fetch values from fields.
+                User.setUsername(editName.getText().toString());
+                User.setUserEmail(editEmail.getText().toString());
+                User.setUserPassword(editPassword.getText().toString());
+                User.setUserWeight(editWeight.getText().toString());
+                User.setUserHeight(editHeight.getText().toString());
+                User.setUserTarget(editTarget.getText().toString());
 
-                if (insertData == true){
-                    Toast.makeText(ProfileActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+                boolean updateData = myFitDB.updateUser();
+
+                if (updateData == true){
+                    Toast.makeText(ProfileActivity.this, "Details successfully updated.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(ProfileActivity.this, "Error registering user.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Error updating details.", Toast.LENGTH_SHORT).show();
                 }
-                */
             }
         });
     }
 
     private void initValues() {
 
-        // Get user values from database
-        String userName = "Test Name";
-        String userEmail = "Test Email";
-        String userPassword = "Password";
-        String userWeight = "Test Weight";
-        String userHeight = "Test Height";
-        String userTarget = "Test Target";
-
-        // Populate UI elements with data
-        editName.setText(userName);
-        editEmail.setText(userEmail);
-        editPassword.setText(userPassword);
-        editWeight.setText(userWeight);
-        editHeight.setText(userHeight);
-        editTarget.setText(userTarget);
+        // Populate UI elements with data from User class
+        editName.setText(User.getUsername());
+        editEmail.setText(User.getUserEmail());
+        editPassword.setText(User.getUserPassword());
+        editWeight.setText(User.getUserWeight());
+        editHeight.setText(User.getUserHeight());
+        editTarget.setText(User.getUserTarget());
     }
 }
