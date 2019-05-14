@@ -26,6 +26,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+        setTitle("Register");
 
         myFitDB = new DatabaseHelper(this);
         buttonRegister = (Button)findViewById(R.id.buttonRegister);
@@ -44,8 +45,8 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = editName.getText().toString();
-                String email = editEmail.getText().toString();
-                String password = editPassword.getText().toString();
+                String email = "'" + editEmail.getText().toString() + "'";
+                String password = "'" + editPassword.getText().toString() + "'";
                 String weight = editWeight.getText().toString();
                 String height = editHeight.getText().toString();
                 String target = editTarget.getText().toString();

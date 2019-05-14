@@ -33,6 +33,7 @@ public class PhotoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+        setTitle("Progress");
 
         buttonTakePhoto = findViewById(R.id.buttonTakePhoto);
         imageView = findViewById(R.id.imageView);

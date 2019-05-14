@@ -24,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
         buttonNewRegister = (Button)findViewById(R.id.buttonNewRegister);
 
         launchLogin();
-
         launchRegister();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Do nothing
     }
 
     private void launchLogin() {

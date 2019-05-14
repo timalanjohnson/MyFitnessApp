@@ -22,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        setTitle("Your Profile");
 
         myFitDB = new DatabaseHelper(this);
         buttonUpdateDetails = (Button)findViewById(R.id.buttonUpdateDetails);

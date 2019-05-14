@@ -9,19 +9,22 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="32dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="48dp">
 
             <TextView
                 android:id="@+id/txtPromptName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_name" />
 
@@ -34,13 +37,14 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="@string/hint_name"
-                android:textAppearance="@style/EditText"
-                android:textColor="@color/colorLightGrey" />
+                android:textColor="@color/colorLightGrey"
+                android:textColorHint="@color/colorLightGrey" />
 
             <TextView
                 android:id="@+id/txtPromptPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_password" />
 
@@ -58,6 +62,7 @@
                 android:id="@+id/txtPromptEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_email" />
 
@@ -75,6 +80,7 @@
                 android:id="@+id/txtPromptWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_weight" />
 
@@ -92,6 +98,7 @@
                 android:id="@+id/txtPromptHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_height" />
 
@@ -109,6 +116,7 @@
                 android:id="@+id/txtPrompTarget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/prompt_step_count_target" />
 
@@ -127,6 +135,8 @@
                 style="@style/DefaultButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginBottom="48dp"
                 android:text="@string/button_register" />
         </LinearLayout>
     </ScrollView>
