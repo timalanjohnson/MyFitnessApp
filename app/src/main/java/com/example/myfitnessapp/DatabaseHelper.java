@@ -15,7 +15,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_USERS = "users_table";
     public static final String COL_ID = "ID";
     public static final String COL_USERNAME = "USERNAME";
-    public static final String COL_EMAIL = "EMAIL";
     public static final String COL_PASSWORD = "PASSWORD";
     public static final String COL_WEIGHT = "WEIGHT";
     public static final String COL_HEIGHT = "HEIGHT";
@@ -27,16 +26,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(new StringBuilder("DROP IF TABLE EXISTS ").append(TABLE_USERS).toString());
         String createTable = new StringBuilder()
                 .append("CREATE TABLE ").append(TABLE_USERS)
                 .append("(ID INTEGER PRIMARY KEY AUTOINCREMENT,")
                 .append("USERNAME TEXT,")
-                .append("EMAIL TEXT,")
                 .append("PASSWORD TEXT,")
                 .append("WEIGHT TEXT,")
                 .append("HEIGHT TEXT,")
                 .append("TARGET TEXT)").toString();
         db.execSQL(createTable);
+        addUser("root","pass","77","177","5000");
     }
 
     @Override
@@ -45,12 +45,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addUser(String username, String email, String password, String weight, String height, String target) {
+    public boolean addUser(String username, String password, String weight, String height, String target) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_USERNAME, username);
-        contentValues.put(COL_EMAIL, email);
         contentValues.put(COL_PASSWORD, password);
         contentValues.put(COL_WEIGHT, weight);
         contentValues.put(COL_HEIGHT, height);
@@ -72,7 +71,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_USERNAME, User.getUsername());
-        contentValues.put(COL_EMAIL, User.getUserEmail());
         contentValues.put(COL_PASSWORD, User.getUserPassword());
         contentValues.put(COL_WEIGHT, User.getUserWeight());
         contentValues.put(COL_HEIGHT, User.getUserHeight());
@@ -95,7 +93,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // array of columns to fetch
         String[] columns = {
-                COL_EMAIL,
                 COL_PASSWORD,
                 COL_WEIGHT,
                 COL_HEIGHT,
@@ -112,7 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         /**
          * Here query function is used to fetch records from user table this function works like we use sql query.
          * SQL query equivalent to this query function is
-         * SELECT user_email, user_password, user_weight, user_target FROM users_table WHERE username = 'tim';
+         * SELECT user_password, user_weight, user_target FROM users_table WHERE username = 'tim';
          */
         Cursor cursor = db.query(TABLE_USERS, //Table to query
                 columns,                    //columns to return
@@ -125,11 +122,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int cursorCount = cursor.getCount();
         if (cursorCount == 1) {
             User.setUsername(username);
-            User.setUserEmail(cursor.getString(0));
-            User.setUserPassword(cursor.getString(1));
-            User.setUserWeight(cursor.getString(2));
-            User.setUserHeight(cursor.getString(3));
-            User.setUserTarget(cursor.getString(4));
+            User.setUserPassword(cursor.getString(0));
+            User.setUserWeight(cursor.getString(1));
+            User.setUserHeight(cursor.getString(2));
+            User.setUserTarget(cursor.getString(3));
         }
 
         cursor.close();
@@ -194,7 +190,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         /**
          * Here query function is used to fetch records from user table this function works like we use sql query.
          * SQL query equivalent to this query function is
-         * SELECT user_id FROM users_table WHERE username = 'tim' AND user_password = 'qwerty';
+         * SELECT username FROM users_table WHERE username = 'tim' AND user_password = 'qwerty';
          */
         Cursor cursor = db.query(TABLE_USERS, //Table to query
                 columns,                    //columns to return

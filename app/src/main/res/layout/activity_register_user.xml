@@ -36,7 +36,7 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/hint_name"
+                android:text=""
                 android:textColor="@color/colorLightGrey"
                 android:textColorHint="@color/colorLightGrey" />
 
@@ -56,24 +56,6 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:textColor="@color/colorLightGrey" />
-
-            <TextView
-                android:id="@+id/txtPromptEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/prompt_email" />
-
-            <EditText
-                android:id="@+id/editEmail"
-                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
                 android:textColor="@color/colorLightGrey" />
 
             <TextView

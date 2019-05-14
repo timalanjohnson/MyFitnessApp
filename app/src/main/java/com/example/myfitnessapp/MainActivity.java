@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
     // Validates the users credentials
     private void validate() {
-        username = txtUsername.getText().toString();
-        password = txtPassword.getText().toString();
+        username = txtUsername.getText().toString().trim();
+        password = txtPassword.getText().toString().trim();
 
-        boolean userExists = myFitDB.checkUser(username, password);
+        boolean userExists = myFitDB.checkUser(username);
 
         if (userExists) {
-            createUser();
+            //createUser();
             launchDashboard();
         } else {
             Toast.makeText(MainActivity.this, "Username or password is incorrect.", Toast.LENGTH_SHORT).show();
@@ -54,23 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createUser() {
-
         myFitDB.makeUser(username);
-
-        String username = "username";
-        String email = "TestEmail";
-        String password = "pass";
-        String weight = "85";
-        String height = "177";
-        String target = "5000";
-
-        // Creates local user for convenience
-        User.setUsername(username);
-        User.setUserEmail(email);
-        User.setUserPassword(password);
-        User.setUserWeight(weight);
-        User.setUserHeight(height);
-        User.setUserTarget(target);
     }
 
     @Override

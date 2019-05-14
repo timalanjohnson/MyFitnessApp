@@ -12,7 +12,6 @@ public class ProfileActivity extends AppCompatActivity {
     DatabaseHelper myFitDB;
     Button buttonUpdateDetails;
     EditText editName;
-    EditText editEmail;
     EditText editPassword;
     EditText editWeight;
     EditText editHeight;
@@ -27,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
         myFitDB = new DatabaseHelper(this);
         buttonUpdateDetails = findViewById(R.id.buttonUpdateDetails);
         editName = findViewById(R.id.editName);
-        editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         editWeight = findViewById(R.id.editWeight);
         editHeight = findViewById(R.id.editHeight);
@@ -47,7 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
 
                 // Fetch values from fields.
                 User.setUsername(editName.getText().toString());
-                User.setUserEmail(editEmail.getText().toString());
                 User.setUserPassword(editPassword.getText().toString());
                 User.setUserWeight(editWeight.getText().toString());
                 User.setUserHeight(editHeight.getText().toString());
@@ -69,7 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Populate UI elements with data from User class
         editName.setText(User.getUsername());
-        editEmail.setText(User.getUserEmail());
         editPassword.setText(User.getUserPassword());
         editWeight.setText(User.getUserWeight());
         editHeight.setText(User.getUserHeight());

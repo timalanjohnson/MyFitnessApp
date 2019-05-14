@@ -15,7 +15,6 @@ public class RegisterUserActivity extends AppCompatActivity {
     DatabaseHelper myFitDB;
     Button buttonRegister;
     EditText editName;
-    EditText editEmail;
     EditText editPassword;
     EditText editWeight;
     EditText editHeight;
@@ -28,13 +27,12 @@ public class RegisterUserActivity extends AppCompatActivity {
         setTitle("Register");
 
         myFitDB = new DatabaseHelper(this);
-        buttonRegister = (Button)findViewById(R.id.buttonRegister);
-        editName = (EditText)findViewById(R.id.editName);
-        editEmail = (EditText)findViewById(R.id.editEmail);
-        editPassword = (EditText)findViewById(R.id.editPassword);
-        editWeight = (EditText)findViewById(R.id.editWeight);
-        editHeight = (EditText)findViewById(R.id.editHeight);
-        editTarget = (EditText)findViewById(R.id.editTarget);
+        buttonRegister = findViewById(R.id.buttonRegister);
+        editName = findViewById(R.id.editName);
+        editPassword = findViewById(R.id.editPassword);
+        editWeight = findViewById(R.id.editWeight);
+        editHeight = findViewById(R.id.editHeight);
+        editTarget = findViewById(R.id.editTarget);
 
         AddUser();
     }
@@ -44,7 +42,6 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = editName.getText().toString();
-                String email = "'" + editEmail.getText().toString() + "'";
                 String password = "'" + editPassword.getText().toString() + "'";
                 String weight = editWeight.getText().toString();
                 String height = editHeight.getText().toString();
@@ -55,10 +52,11 @@ public class RegisterUserActivity extends AppCompatActivity {
                 if (userExists){
                     Toast.makeText(RegisterUserActivity.this, "Sorry, that username is already taken", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean insertData = myFitDB.addUser(username, email, password, weight, height, target);
+                    boolean insertData = myFitDB.addUser(username, password, weight, height, target);
 
                     if (insertData == true){
                         Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+                        //myFitDB.makeUser(username);
                         Intent intent = new Intent(RegisterUserActivity.this, DashboardActivity.class);
                         startActivity(intent);
                     }
