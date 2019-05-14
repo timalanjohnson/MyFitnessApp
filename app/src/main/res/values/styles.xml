@@ -6,6 +6,22 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/gradient</item>
+        <item name="android:textColor">@color/colorLightGrey</item>
+    </style>
+
+    <style name="DefaultButton" parent="@android:style/Widget.Material.Button">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <style name="AccentButton" parent="@android:style/Widget.Material.Button">
+        <item name="android:textColor">@color/colorLightGrey</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="EditText" parent="@android:style/TextAppearance.Material">
+        <item name="android:textColor">@color/colorLightGrey</item>
     </style>
 
 </resources>

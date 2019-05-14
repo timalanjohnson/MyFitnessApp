@@ -17,6 +17,7 @@
 
         <Button
             android:id="@+id/buttonNewLogin"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -24,6 +25,7 @@
 
         <Button
             android:id="@+id/buttonNewRegister"
+            style="@style/AccentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

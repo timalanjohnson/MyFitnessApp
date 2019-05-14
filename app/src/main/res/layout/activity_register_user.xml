@@ -6,109 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".RegisterUserActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
 
-        <TextView
-            android:id="@+id/txtPromptName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_name" />
+            android:layout_margin="16dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/hint_name" />
+            <TextView
+                android:id="@+id/txtPromptName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_name" />
 
-        <TextView
-            android:id="@+id/txtPromptEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_email" />
+            <EditText
+                android:id="@+id/editName"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/hint_name"
+                android:textAppearance="@style/EditText"
+                android:textColor="@color/colorLightGrey" />
 
-        <EditText
-            android:id="@+id/editEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            <TextView
+                android:id="@+id/txtPromptPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_password" />
 
-        <TextView
-            android:id="@+id/txtPromptPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_password" />
+            <EditText
+                android:id="@+id/editPassword"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:textColor="@color/colorLightGrey" />
 
-        <EditText
-            android:id="@+id/editPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPassword" />
+            <TextView
+                android:id="@+id/txtPromptEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_email" />
 
-        <TextView
-            android:id="@+id/txtPromptWeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_weight" />
+            <EditText
+                android:id="@+id/editEmail"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorLightGrey" />
 
-        <EditText
-            android:id="@+id/editWeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/txtPromptWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_weight" />
 
-        <TextView
-            android:id="@+id/txtPromptHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_height" />
+            <EditText
+                android:id="@+id/editWeight"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey" />
 
-        <EditText
-            android:id="@+id/editHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/txtPromptHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_height" />
 
-        <TextView
-            android:id="@+id/txtPrompTarget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/prompt_step_count_target" />
+            <EditText
+                android:id="@+id/editHeight"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey" />
 
-        <EditText
-            android:id="@+id/editTarget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/txtPrompTarget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_step_count_target" />
 
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_register"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTarget"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey" />
+
+            <Button
+                android:id="@+id/buttonRegister"
+                style="@style/DefaultButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_register" />
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

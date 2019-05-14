@@ -16,6 +16,7 @@
 
         <Button
             android:id="@+id/buttonDashProfile"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -23,6 +24,7 @@
 
         <Button
             android:id="@+id/buttonDashGoals"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -30,6 +32,7 @@
 
         <Button
             android:id="@+id/buttonDashWeight"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -37,6 +40,7 @@
 
         <Button
             android:id="@+id/buttonDashPhoto"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -44,6 +48,7 @@
 
         <Button
             android:id="@+id/buttonDashSettings"
+            style="@style/DefaultButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -51,6 +56,7 @@
 
         <Button
             android:id="@+id/buttonDashLogout"
+            style="@style/AccentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
