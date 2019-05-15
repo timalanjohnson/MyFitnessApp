@@ -57,10 +57,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         if (result == 1){
-            return false;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 
@@ -68,20 +68,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_USERNAME, User.getUsername());
         contentValues.put(COL_PASSWORD, User.getUserPassword());
         contentValues.put(COL_WEIGHT, User.getUserWeight());
         contentValues.put(COL_HEIGHT, User.getUserHeight());
         contentValues.put(COL_TARGET, User.getUserTarget());
 
-        long result = db.update(TABLE_USERS, contentValues, COL_ID + " = ?", new String[]{String.valueOf(User.getUserID())});
+        long result = db.update(TABLE_USERS, contentValues, COL_USERNAME + " = ?", new String[]{User.getUsername()});
         db.close();
 
         if (result == 1){
-            return false;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 

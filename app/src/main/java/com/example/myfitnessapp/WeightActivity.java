@@ -22,6 +22,7 @@ public class WeightActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         editTextUpdateWeight = findViewById(R.id.editTextUpdateWeight);
         buttonUpdateWeight  = findViewById(R.id.buttonUpdateWeight);
+        editTextUpdateWeight.setText(User.getUserWeight());
 
         UpdateData();
     }

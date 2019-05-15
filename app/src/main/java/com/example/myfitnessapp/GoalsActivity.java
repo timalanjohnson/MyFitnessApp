@@ -22,6 +22,7 @@ public class GoalsActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         editTarget = findViewById(R.id.editTextStepGoal);
         buttonSaveStepGoal  = findViewById(R.id.buttonSaveStepGoal);
+        editTarget.setText(User.getUserTarget());
 
         UpdateData();
     }
