@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper myFitDB;
+    DatabaseHelper db;
     EditText txtUsername;
     EditText txtPassword;
     Button buttonNewLogin;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myFitDB = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         txtUsername = findViewById(R.id.editTextLoginUsername);
         txtPassword = findViewById(R.id.editTextLoginPassword);
         buttonNewLogin = findViewById(R.id.buttonNewLogin);
@@ -40,21 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
     // Validates the users credentials
     private void validate() {
-        username = txtUsername.getText().toString().trim();
-        password = txtPassword.getText().toString().trim();
+        username = txtUsername.getText().toString();
+        password = txtPassword.getText().toString();
 
-        boolean userExists = myFitDB.checkUser(username);
+        boolean exists = db.checkUser(username, password);
 
-        if (userExists) {
-            //createUser();
+        if (exists) {
+            Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            db.makeUser(username);
             launchDashboard();
         } else {
             Toast.makeText(MainActivity.this, "Username or password is incorrect.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void createUser() {
-        myFitDB.makeUser(username);
     }
 
     @Override

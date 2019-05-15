@@ -12,7 +12,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = RegisterUserActivity.class.getSimpleName();
 
-    DatabaseHelper myFitDB;
+    DatabaseHelper db;
     Button buttonRegister;
     EditText editName;
     EditText editPassword;
@@ -26,7 +26,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
         setTitle("Register");
 
-        myFitDB = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         buttonRegister = findViewById(R.id.buttonRegister);
         editName = findViewById(R.id.editName);
         editPassword = findViewById(R.id.editPassword);
@@ -42,27 +42,28 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = editName.getText().toString();
-                String password = "'" + editPassword.getText().toString() + "'";
+                String password = editPassword.getText().toString();
                 String weight = editWeight.getText().toString();
                 String height = editHeight.getText().toString();
                 String target = editTarget.getText().toString();
 
-                boolean userExists = myFitDB.checkUser(username);
+                boolean userExists = false;//db.checkUser(username);
 
                 if (userExists){
                     Toast.makeText(RegisterUserActivity.this, "Sorry, that username is already taken", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean insertData = myFitDB.addUser(username, password, weight, height, target);
 
-                    if (insertData == true){
-                        Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
-                        //myFitDB.makeUser(username);
-                        Intent intent = new Intent(RegisterUserActivity.this, DashboardActivity.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(RegisterUserActivity.this, "Error registering user.", Toast.LENGTH_SHORT).show();
-                    }
+                    boolean insertData = db.addUser(username, password, weight, height, target);
+                    Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+
+                    User.setUsername(username);
+                    User.setUserPassword(password);
+                    User.setUserWeight(weight);
+                    User.setUserHeight(height);
+                    User.setUserTarget(target);
+
+                    Intent intent = new Intent(RegisterUserActivity.this, DashboardActivity.class);
+                    startActivity(intent);
                 }
             }
         });

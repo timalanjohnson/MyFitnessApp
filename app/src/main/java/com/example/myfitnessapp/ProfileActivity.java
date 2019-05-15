@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    DatabaseHelper myFitDB;
+    DatabaseHelper db;
     Button buttonUpdateDetails;
     EditText editName;
     EditText editPassword;
@@ -23,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         setTitle("Your Profile");
 
-        myFitDB = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         buttonUpdateDetails = findViewById(R.id.buttonUpdateDetails);
         editName = findViewById(R.id.editName);
         editPassword = findViewById(R.id.editPassword);
@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
                 User.setUserHeight(editHeight.getText().toString());
                 User.setUserTarget(editTarget.getText().toString());
 
-                boolean updateData = myFitDB.updateUser();
+                boolean updateData = db.updateUser();
 
                 if (updateData == true){
                     Toast.makeText(ProfileActivity.this, "Details successfully updated.", Toast.LENGTH_SHORT).show();

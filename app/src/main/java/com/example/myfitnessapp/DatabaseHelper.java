@@ -10,15 +10,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "myFitDB.db";
+    public static final String DATABASE_NAME = "myFitDB2.db";
 
-    public static final String TABLE_USERS = "users_table";
-    public static final String COL_ID = "ID";
-    public static final String COL_USERNAME = "USERNAME";
-    public static final String COL_PASSWORD = "PASSWORD";
-    public static final String COL_WEIGHT = "WEIGHT";
-    public static final String COL_HEIGHT = "HEIGHT";
-    public static final String COL_TARGET = "TARGET";
+    public static final String TABLE_USERS = "user";
+    public static final String COL_ID = "id";
+    public static final String COL_USERNAME = "username";
+    public static final String COL_PASSWORD = "password";
+    public static final String COL_WEIGHT = "weight";
+    public static final String COL_HEIGHT = "height";
+    public static final String COL_TARGET = "target";
 
     public DatabaseHelper (Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -26,17 +26,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(new StringBuilder("DROP IF TABLE EXISTS ").append(TABLE_USERS).toString());
         String createTable = new StringBuilder()
                 .append("CREATE TABLE ").append(TABLE_USERS)
-                .append("(ID INTEGER PRIMARY KEY AUTOINCREMENT,")
-                .append("USERNAME TEXT,")
-                .append("PASSWORD TEXT,")
-                .append("WEIGHT TEXT,")
-                .append("HEIGHT TEXT,")
-                .append("TARGET TEXT)").toString();
+                .append("(id INTEGER PRIMARY KEY AUTOINCREMENT,")
+                .append("username TEXT,")
+                .append("password TEXT,")
+                .append("weight TEXT,")
+                .append("height TEXT,")
+                .append("target TEXT)").toString();
         db.execSQL(createTable);
-        addUser("root","pass","77","177","5000");
     }
 
     @Override
@@ -87,127 +85,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Makes user object of user with specified username
-    public void makeUser(String username) {
+    public boolean checkUser(String user) {
+        // Check if record exists with username
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(new StringBuilder().append("SELECT id FROM user WHERE username = '").append(user).append("'").toString(), null);
 
-        // array of columns to fetch
-        String[] columns = {
-                COL_PASSWORD,
-                COL_WEIGHT,
-                COL_HEIGHT,
-                COL_TARGET
-        };
+        int count = cursor.getCount();
+        cursor.moveToFirst();
 
-        // selection criteria
-        String selection = COL_USERNAME + " = ?";
-
-        // selection argument
-        String[] selectionArgs = {username};
-
-        // query user table with condition
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_password, user_weight, user_target FROM users_table WHERE username = 'tim';
-         */
-        Cursor cursor = db.query(TABLE_USERS, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                      //filter by row groups
-                null);                      //The sort order
-
-        int cursorCount = cursor.getCount();
-        if (cursorCount == 1) {
-            User.setUsername(username);
-            User.setUserPassword(cursor.getString(0));
-            User.setUserWeight(cursor.getString(1));
-            User.setUserHeight(cursor.getString(2));
-            User.setUserTarget(cursor.getString(3));
-        }
-
-        cursor.close();
-        db.close();
-    }
-
-    // Check if user with specified username exists.
-    public boolean checkUser(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        // array of columns to fetch
-        String[] columns = {
-                COL_ID
-        };
-
-        // selection criteria
-        String selection = COL_USERNAME + " = ?";
-
-        // selection argument
-        String[] selectionArgs = {username};
-
-        // query user table with condition
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT id FROM users_table WHERE username = 'tim';
-         */
-        Cursor cursor = db.query(TABLE_USERS, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                      //filter by row groups
-                null);                      //The sort order
-        int cursorCount = cursor.getCount();
-        cursor.close();
-        db.close();
-
-        if (cursorCount > 0) {
+        if (count > 0) {
             return true;
+        } else {
+            return false;
         }
-
-        return false;
     }
 
-    // Check if user with specified username and password exists
-    public boolean checkUser(String username, String password) {
-        SQLiteDatabase db = this.getReadableDatabase();
+    public boolean checkUser(String user, String pass) {
+        // Check if record exists with username and password
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(new StringBuilder().append("SELECT id FROM user WHERE username = '").append(user).append("' AND password = '").append(pass).append("'").toString(), null);
 
-        // array of columns to fetch
-        String[] columns = {
-                COL_ID
-        };
+        int count = cursor.getCount();
+        cursor.moveToFirst();
 
-        // selection criteria
-        String selection = COL_USERNAME + " = ?" + " AND " + COL_PASSWORD + " = ?";
-
-        // selection arguments
-        String[] selectionArgs = {username, password};
-
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT username FROM users_table WHERE username = 'tim' AND user_password = 'qwerty';
-         */
-        Cursor cursor = db.query(TABLE_USERS, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
-
-        int cursorCount = cursor.getCount();
-
-        cursor.close();
-        db.close();
-        if (cursorCount > 0) {
+        if (count > 0) {
             return true;
+        } else {
+            return false;
         }
-
-        return false;
     }
+
+    public void makeUser(String user){
+        // Get fields for username and populate User static class
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(new StringBuilder().append("SELECT password, weight, height, target FROM user WHERE username = '").append(user).append("'").toString(), null);
+
+        cursor.moveToFirst();
+
+        User.setUsername(user);
+        User.setUserPassword(cursor.getString(0));
+        User.setUserWeight(cursor.getString(1));
+        User.setUserHeight(cursor.getString(2));
+        User.setUserTarget(cursor.getString(3));
+
+    }
+
 }
