@@ -11,6 +11,7 @@ public class DashboardActivity extends AppCompatActivity {
     Button buttonDashProfile;
     Button buttonDashGoals;
     Button buttonDashWeight;
+    Button buttonDashStepCounter;
     Button buttonDashPhoto;
     Button buttonDashSettings;
     Button buttonDashLogout;
@@ -20,17 +21,19 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        buttonDashProfile = (Button)findViewById(R.id.buttonDashProfile);
-        buttonDashGoals = (Button)findViewById(R.id.buttonDashGoals);
-        buttonDashWeight = (Button)findViewById(R.id.buttonDashWeight);
-        buttonDashPhoto = (Button)findViewById(R.id.buttonDashPhoto);
-        buttonDashSettings = (Button)findViewById(R.id.buttonDashSettings);
-        buttonDashLogout = (Button)findViewById(R.id.buttonDashLogout);
+        buttonDashProfile = findViewById(R.id.buttonDashProfile);
+        buttonDashGoals = findViewById(R.id.buttonDashGoals);
+        buttonDashWeight = findViewById(R.id.buttonDashWeight);
+        buttonDashStepCounter = findViewById(R.id.buttonDashStepCounter);
+        buttonDashPhoto = findViewById(R.id.buttonDashPhoto);
+        buttonDashSettings = findViewById(R.id.buttonDashSettings);
+        buttonDashLogout = findViewById(R.id.buttonDashLogout);
 
         // Launches corresponding activity on clicking a button.
         launchProfile();
         launchGoals();
         launchWeight();
+        launchStepCounter();
         launchPhoto();
         launchSettings();
         logout();
@@ -61,6 +64,16 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, WeightActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void launchStepCounter(){
+        buttonDashStepCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, StepCounterActivity.class);
                 startActivity(intent);
             }
         });

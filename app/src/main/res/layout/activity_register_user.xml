@@ -95,6 +95,24 @@
                 android:textColor="@color/colorLightGrey" />
 
             <TextView
+                android:id="@+id/txtPromptWeightGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Set a goal for you're weight (kg)" />
+
+            <EditText
+                android:id="@+id/editWeightGoal"
+                style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey" />
+
+            <TextView
                 android:id="@+id/txtPrompTarget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,7 +121,7 @@
                 android:text="@string/prompt_step_count_target" />
 
             <EditText
-                android:id="@+id/editTarget"
+                android:id="@+id/editStepGoal"
                 style="@style/Base.Widget.MaterialComponents.TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

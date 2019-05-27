@@ -3,6 +3,7 @@ package com.example.myfitnessapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -43,7 +44,19 @@ public class MainActivity extends AppCompatActivity {
         username = txtUsername.getText().toString();
         password = txtPassword.getText().toString();
 
-        boolean exists = db.checkUser(username, password);
+        boolean exists = false;
+
+        try{
+            exists = db.checkUser(username, password);
+        }
+        catch (Exception e) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Error")
+                    .setMessage("Error logging in: " + e.getMessage())
+                    .setNegativeButton(android.R.string.no, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
 
         if (exists) {
             Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT).show();

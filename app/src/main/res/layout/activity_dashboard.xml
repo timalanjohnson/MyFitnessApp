@@ -40,6 +40,14 @@
             android:text="Update Weight" />
 
         <Button
+            android:id="@+id/buttonDashStepCounter"
+            style="@style/DefaultButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Step Counter" />
+
+        <Button
             android:id="@+id/buttonDashPhoto"
             style="@style/DefaultButton"
             android:layout_width="match_parent"

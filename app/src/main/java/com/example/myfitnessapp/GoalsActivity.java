@@ -10,7 +10,8 @@ import android.widget.Toast;
 public class GoalsActivity extends AppCompatActivity {
 
     DatabaseHelper db;
-    EditText editTarget;
+    EditText editWeightGoal;
+    EditText editStepGoal;
     Button buttonSaveStepGoal;
 
     @Override
@@ -20,9 +21,16 @@ public class GoalsActivity extends AppCompatActivity {
         setTitle("Goals");
 
         db = new DatabaseHelper(this);
-        editTarget = findViewById(R.id.editTextStepGoal);
+
+        editWeightGoal = findViewById(R.id.editTextWeightGoal);
+
+        editStepGoal = findViewById(R.id.editTextStepGoal);
+
+        editWeightGoal.setText(User.getUserWeightGoal());
+
+        editStepGoal.setText(User.getUserStepGoal());
+
         buttonSaveStepGoal  = findViewById(R.id.buttonSaveStepGoal);
-        editTarget.setText(User.getUserTarget());
 
         UpdateData();
     }
@@ -33,7 +41,8 @@ public class GoalsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Fetch values from fields.
-                User.setUserTarget(editTarget.getText().toString());
+                User.setUserWeightGoal(editWeightGoal.getText().toString());
+                User.setUserStepGoal(editStepGoal.getText().toString());
 
                 boolean updateData = db.updateUser();
 

@@ -23,4 +23,5 @@
     <string name="prompt_step_count_target">Step Count Target (e.g. 5000)</string>
     <string name="hint_name">Username</string>
     <string name="button_register">Register</string>
+    <string name="title_activity_step_counter">StepCounter</string>
 </resources>

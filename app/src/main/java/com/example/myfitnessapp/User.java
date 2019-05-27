@@ -2,24 +2,26 @@ package com.example.myfitnessapp;
 
 public class User {
 
-    private static String userID;
+    private static int userID;
     private static String username;
     private static String userPassword;
     private static String userEmail;
     private static String userWeight;
     private static String userHeight;
     private static String userTarget;
+    private static String userWeightGoal;
+    private static String userStepGoal;
 
 
     public User(){
         // Default constructor
     }
 
-    public static String getUserID() {
+    public static int getUserID() {
         return userID;
     }
 
-    public static void setUserID(String userID) {
+    public static void setUserID(int userID) {
         User.userID = userID;
     }
 
@@ -69,5 +71,21 @@ public class User {
 
     public static void setUserTarget(String userTarget) {
         User.userTarget = userTarget;
+    }
+
+    public static String getUserWeightGoal() {
+        return userWeightGoal;
+    }
+
+    public static void setUserWeightGoal(String userWeightGoal) {
+        User.userWeightGoal = userWeightGoal;
+    }
+
+    public static String getUserStepGoal() {
+        return userStepGoal;
+    }
+
+    public static void setUserStepGoal(String userStepGoal) {
+        User.userStepGoal = userStepGoal;
     }
 }

@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editWeight = findViewById(R.id.editWeight);
         editHeight = findViewById(R.id.editHeight);
-        editTarget = findViewById(R.id.editTarget);
+        editTarget = findViewById(R.id.editStepGoal);
 
         // Initialize fields with values from the database
         initValues();

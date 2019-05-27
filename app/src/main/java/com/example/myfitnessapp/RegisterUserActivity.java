@@ -18,7 +18,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     EditText editPassword;
     EditText editWeight;
     EditText editHeight;
-    EditText editTarget;
+    EditText editWeightGoal;
+    EditText editStepGoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editWeight = findViewById(R.id.editWeight);
         editHeight = findViewById(R.id.editHeight);
-        editTarget = findViewById(R.id.editTarget);
+        editWeightGoal = findViewById(R.id.editWeightGoal);
+        editStepGoal = findViewById(R.id.editStepGoal);
 
         AddUser();
     }
@@ -45,23 +47,24 @@ public class RegisterUserActivity extends AppCompatActivity {
                 String password = editPassword.getText().toString();
                 String weight = editWeight.getText().toString();
                 String height = editHeight.getText().toString();
-                String target = editTarget.getText().toString();
+                String weight_goal = editWeightGoal.getText().toString();
+                String step_goal = editStepGoal.getText().toString();
 
-                boolean userExists = false;//db.checkUser(username);
+                boolean userExists = db.checkUser(username);
 
                 if (userExists){
                     Toast.makeText(RegisterUserActivity.this, "Sorry, that username is already taken", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else {
+                    // Create user in the database
+                    db.addUser(username, password, weight, height, weight_goal, step_goal);
 
-                    boolean insertData = db.addUser(username, password, weight, height, target);
+                    // Populate static User with relevant details
+                    db.makeUser(username);
+
                     Toast.makeText(RegisterUserActivity.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
 
-                    User.setUsername(username);
-                    User.setUserPassword(password);
-                    User.setUserWeight(weight);
-                    User.setUserHeight(height);
-                    User.setUserTarget(target);
-
+                    // Log into the dashboard
                     Intent intent = new Intent(RegisterUserActivity.this, DashboardActivity.class);
                     startActivity(intent);
                 }

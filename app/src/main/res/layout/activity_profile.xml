@@ -95,7 +95,7 @@
                 android:text="@string/prompt_step_count_target" />
 
             <EditText
-                android:id="@+id/editTarget"
+                android:id="@+id/editStepGoal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
