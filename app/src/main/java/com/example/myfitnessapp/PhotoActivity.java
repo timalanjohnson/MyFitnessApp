@@ -2,32 +2,27 @@ package com.example.myfitnessapp;
 
 import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static android.os.Environment.getExternalStoragePublicDirectory;
 
 public class PhotoActivity extends AppCompatActivity {
 
     Button buttonTakePhoto;
     ImageView imageView;
-    String pathToFile;
+    private Uri file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +33,55 @@ public class PhotoActivity extends AppCompatActivity {
         buttonTakePhoto = findViewById(R.id.buttonTakePhoto);
         imageView = findViewById(R.id.imageView);
 
-        if(Build.VERSION.SDK_INT >= 23)
-        {
-            requestPermissions(new String[] {
-                    Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE
-            }, 2);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            buttonTakePhoto.setEnabled(false);
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 0) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                buttonTakePhoto.setEnabled(true);
+            }
+        }
+    }
+
+    public void takePicture(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        file = Uri.fromFile(getOutputMediaFile());
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
+
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                imageView.setImageURI(file);
+            }
+        }
+    }
+
+    private static File getOutputMediaFile(){
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "CameraDemo");
+
+        if (!mediaStorageDir.exists()){
+            if (!mediaStorageDir.mkdirs()){
+                return null;
+            }
         }
 
-        buttonTakePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dispatchPictureTakerAction();
-            }
-        });
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return new File(mediaStorageDir.getPath() + File.separator +
+                "IMG_"+ timeStamp + ".jpg");
     }
+
+    /* Old code commented out in case further reference is needed. Should be removed at some stage.
 
     private void dispatchPictureTakerAction(){
         Intent takePhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -100,4 +130,6 @@ public class PhotoActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap); //Set the results to Bitmap
         }
     }
+
+    */
 }

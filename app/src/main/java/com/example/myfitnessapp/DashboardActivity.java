@@ -83,7 +83,7 @@ public class DashboardActivity extends AppCompatActivity {
         buttonDashPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                Intent intent = new Intent(DashboardActivity.this, PhotoActivity.class);
                 startActivity(intent);
             }
         });
