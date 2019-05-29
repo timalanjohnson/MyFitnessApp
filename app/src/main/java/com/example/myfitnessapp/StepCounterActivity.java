@@ -16,6 +16,7 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
     SensorManager sensorManager;
 
     TextView textStepCount;
+    TextView textStepCountGoal;
     ProgressBar progressbarStepGoal;
 
     boolean running = false;
@@ -28,10 +29,12 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textStepCount = findViewById(R.id.textStepCount);
+        textStepCountGoal = findViewById(R.id.textStepCountGoal);
         progressbarStepGoal = findViewById(R.id.progressbarStepGoal);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        textStepCountGoal.setText("Goal: " + User.getUserStepGoal() + " steps.");
         int stepGoal = Integer.parseInt(User.getUserStepGoal());
         progressbarStepGoal.setMax(stepGoal);
     }

@@ -39,12 +39,13 @@ public class WeightActivity extends AppCompatActivity {
         editTextUpdateWeightGoal.setText(User.getUserWeightGoal());
         buttonUpdateWeight  = findViewById(R.id.buttonUpdateWeight);
 
+        UpdateGraph();
         UpdateData();
+    }
+
+    private void UpdateGraph() {
 
         ArrayList<String> xAXES = new ArrayList<>();
-        // ArrayList<Entry> yAXESsin = new ArrayList<>();
-        // ArrayList<Entry> yAXEScos = new ArrayList<>();
-
         ArrayList<Entry> yAXEStarget = new ArrayList<>();
         ArrayList<Entry> yAXEScurrent = new ArrayList<>();
 
@@ -52,20 +53,11 @@ public class WeightActivity extends AppCompatActivity {
         int numDataPoints = 100;
 
         for(int i=0;i<numDataPoints;i++){
-            // float sinFunction = Float.parseFloat(String.valueOf(Math.sin(x)));
-            // float cosFunction = Float.parseFloat(String.valueOf(Math.cos(x)));
-
             float target = Float.parseFloat(User.getUserWeightGoal());
             float current = Float.parseFloat(User.getUserWeight());
-
             x = x + 10;
-            // yAXESsin.add(new Entry(sinFunction,i));
-            // yAXEScos.add(new Entry(cosFunction,i));
-
             yAXEStarget.add(new Entry(target,i));
             yAXEScurrent.add(new Entry(current,i));
-
-
             xAXES.add(i, String.valueOf(x));
         }
 
@@ -76,11 +68,11 @@ public class WeightActivity extends AppCompatActivity {
 
         ArrayList<ILineDataSet> lineDataSets = new ArrayList<>();
 
-        LineDataSet lineDataSet1 = new LineDataSet(yAXEStarget,"cos");
+        LineDataSet lineDataSet1 = new LineDataSet(yAXEStarget,"Target");
         lineDataSet1.setDrawCircles(false);
         lineDataSet1.setColor(Color.RED);
 
-        LineDataSet lineDataSet2 = new LineDataSet(yAXEScurrent,"sin");
+        LineDataSet lineDataSet2 = new LineDataSet(yAXEScurrent,"Current");
         lineDataSet2.setDrawCircles(false);
         lineDataSet2.setColor(Color.WHITE);
 
@@ -91,7 +83,6 @@ public class WeightActivity extends AppCompatActivity {
         weightGraph.setData(new LineData(xaxes,lineDataSets));
 
         weightGraph.setVisibleXRangeMaximum(65f);
-
     }
 
     private void UpdateData() {
@@ -107,6 +98,7 @@ public class WeightActivity extends AppCompatActivity {
 
                 if (updateData == true){
                     Toast.makeText(WeightActivity.this, "Details successfully updated.", Toast.LENGTH_SHORT).show();
+                    UpdateGraph();
                 }
                 else {
                     Toast.makeText(WeightActivity.this, "Error updating details.", Toast.LENGTH_SHORT).show();

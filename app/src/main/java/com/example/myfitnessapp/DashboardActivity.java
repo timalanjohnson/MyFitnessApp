@@ -15,7 +15,6 @@ public class DashboardActivity extends AppCompatActivity {
     ImageButton imageButtonSteps;
     ImageButton imageButtonPhoto;
     ImageButton imageButtonSettings;
-    ImageButton imageButtonAbout;
     ImageButton imageButtonLogout;
 
     @Override
@@ -29,7 +28,6 @@ public class DashboardActivity extends AppCompatActivity {
         imageButtonSteps = findViewById(R.id.imageButtonSteps);
         imageButtonPhoto = findViewById(R.id.imageButtonPhoto);
         imageButtonSettings = findViewById(R.id.imageButtonSettings);
-        imageButtonAbout = findViewById(R.id.imageButtonAbout);
         imageButtonLogout = findViewById(R.id.imageButtonLogout);
 
         // Launches corresponding activity on clicking a button.

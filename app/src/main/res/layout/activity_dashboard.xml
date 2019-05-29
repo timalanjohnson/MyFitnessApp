@@ -175,16 +175,6 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/imageButtonAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    app:srcCompat="@drawable/info" />
-
-                <ImageButton
                     android:id="@+id/imageButtonLogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,14 +190,6 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:paddingBottom="40dp">
-
-                <TextView
-                    android:id="@+id/txtAbout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="About" />
 
                 <TextView
                     android:id="@+id/txtLogout"
