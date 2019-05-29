@@ -6,35 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".WeightActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:paddingTop="32dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtUpdateWeight"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Update your weight" />
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:paddingTop="32dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextUpdateWeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:inputType="number"
-            android:textColor="@color/colorLightGrey"  />
+            <TextView
+                android:id="@+id/txtWeightProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Weight Progress" />
 
-        <Button
-            android:id="@+id/buttonUpdateWeight"
-            style="@style/DefaultButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Update" />
-    </LinearLayout>
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:textColor="@color/colorLightGrey"
+                android:id="@+id/weightGraph"></com.github.mikephil.charting.charts.LineChart>
+
+            <TextView
+                android:id="@+id/txtUpdateWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Update your weight" />
+
+            <EditText
+                android:id="@+id/editTextUpdateWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey"  />
+
+            <TextView
+                android:id="@+id/txtUpdateWeightGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Update your weight goal" />
+
+            <EditText
+                android:id="@+id/editTextUpdateWeightGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="@color/colorLightGrey"  />
+
+            <Button
+                android:id="@+id/buttonUpdateWeight"
+                style="@style/DefaultButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="48dp"
+                android:text="Update" />
+        </LinearLayout>
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
