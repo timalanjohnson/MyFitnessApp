@@ -22,6 +22,8 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
+        setTitle("Step Count");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textStepCount = findViewById(R.id.textStepCount);
 

@@ -29,6 +29,7 @@ public class PhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
         setTitle("Progress");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         buttonTakePhoto = findViewById(R.id.buttonTakePhoto);
         imageView = findViewById(R.id.imageView);

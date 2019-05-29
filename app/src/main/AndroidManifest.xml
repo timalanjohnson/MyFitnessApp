@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myfitnessapp">
 
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
     <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".StepCounterActivity"></activity>
-        <activity android:name=".PhotoActivity" />
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".StepCounterActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
+        <activity android:name=".PhotoActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -25,11 +40,36 @@
                 android:resource="@xml/file_filepaths" />
         </provider>
 
-        <activity android:name=".WeightActivity" />
-        <activity android:name=".GoalsActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".WeightActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
+        <activity android:name=".GoalsActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
         <activity android:name=".DashboardActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfitnessapp.DashboardActivity"
+                />
+        </activity>
         <activity android:name=".RegisterUserActivity" />
         <activity
             android:name=".MainActivity"

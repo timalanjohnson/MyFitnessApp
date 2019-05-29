@@ -18,6 +18,7 @@ public class WeightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight);
         setTitle("Update Weight");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
         editTextUpdateWeight = findViewById(R.id.editTextUpdateWeight);
