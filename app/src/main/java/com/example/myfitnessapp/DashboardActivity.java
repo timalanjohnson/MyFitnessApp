@@ -5,29 +5,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    Button buttonDashProfile;
-    Button buttonDashGoals;
-    Button buttonDashWeight;
-    Button buttonDashStepCounter;
-    Button buttonDashPhoto;
-    Button buttonDashSettings;
-    Button buttonDashLogout;
+    ImageButton imageButtonProfile;
+    ImageButton imageButtonGoals;
+    ImageButton imageButtonWeight;
+    ImageButton imageButtonSteps;
+    ImageButton imageButtonPhoto;
+    ImageButton imageButtonSettings;
+    ImageButton imageButtonAbout;
+    ImageButton imageButtonLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        buttonDashProfile = findViewById(R.id.buttonDashProfile);
-        buttonDashGoals = findViewById(R.id.buttonDashGoals);
-        buttonDashWeight = findViewById(R.id.buttonDashWeight);
-        buttonDashStepCounter = findViewById(R.id.buttonDashStepCounter);
-        buttonDashPhoto = findViewById(R.id.buttonDashPhoto);
-        buttonDashSettings = findViewById(R.id.buttonDashSettings);
-        buttonDashLogout = findViewById(R.id.buttonDashLogout);
+        imageButtonProfile = findViewById(R.id.imageButtonProfile);
+        imageButtonGoals = findViewById(R.id.imageButtonGoals);
+        imageButtonWeight = findViewById(R.id.imageButtonWeight);
+        imageButtonSteps = findViewById(R.id.imageButtonSteps);
+        imageButtonPhoto = findViewById(R.id.imageButtonPhoto);
+        imageButtonSettings = findViewById(R.id.imageButtonSettings);
+        imageButtonAbout = findViewById(R.id.imageButtonAbout);
+        imageButtonLogout = findViewById(R.id.imageButtonLogout);
 
         // Launches corresponding activity on clicking a button.
         launchProfile();
@@ -40,7 +43,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchProfile() {
-        buttonDashProfile.setOnClickListener(new View.OnClickListener() {
+        imageButtonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
@@ -50,7 +53,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchGoals() {
-        buttonDashGoals.setOnClickListener(new View.OnClickListener() {
+        imageButtonGoals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, GoalsActivity.class);
@@ -60,7 +63,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchWeight() {
-        buttonDashWeight.setOnClickListener(new View.OnClickListener() {
+        imageButtonWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, WeightActivity.class);
@@ -70,7 +73,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchStepCounter(){
-        buttonDashStepCounter.setOnClickListener(new View.OnClickListener() {
+        imageButtonSteps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, StepCounterActivity.class);
@@ -80,7 +83,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchPhoto() {
-        buttonDashPhoto.setOnClickListener(new View.OnClickListener() {
+        imageButtonPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, PhotoActivity.class);
@@ -90,7 +93,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void launchSettings() {
-        buttonDashSettings.setOnClickListener(new View.OnClickListener() {
+        imageButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
@@ -100,7 +103,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        buttonDashLogout.setOnClickListener(new View.OnClickListener() {
+        imageButtonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, MainActivity.class);

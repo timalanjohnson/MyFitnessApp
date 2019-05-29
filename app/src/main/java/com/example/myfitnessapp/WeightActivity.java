@@ -42,18 +42,33 @@ public class WeightActivity extends AppCompatActivity {
         UpdateData();
 
         ArrayList<String> xAXES = new ArrayList<>();
-        ArrayList<Entry> yAXESsin = new ArrayList<>();
-        ArrayList<Entry> yAXEScos = new ArrayList<>();
+        // ArrayList<Entry> yAXESsin = new ArrayList<>();
+        // ArrayList<Entry> yAXEScos = new ArrayList<>();
+
+        ArrayList<Entry> yAXEStarget = new ArrayList<>();
+        ArrayList<Entry> yAXEScurrent = new ArrayList<>();
+
         double x = 0 ;
-        int numDataPoints = 1000;
+        int numDataPoints = 100;
+
         for(int i=0;i<numDataPoints;i++){
-            float sinFunction = 80; // Float.parseFloat(String.valueOf(Math.sin(x)));
-            float cosFunction = 70; // Float.parseFloat(String.valueOf(Math.cos(x)));
-            x = x + 1;
-            yAXESsin.add(new Entry(sinFunction,i));
-            yAXEScos.add(new Entry(cosFunction,i));
+            // float sinFunction = Float.parseFloat(String.valueOf(Math.sin(x)));
+            // float cosFunction = Float.parseFloat(String.valueOf(Math.cos(x)));
+
+            float target = Float.parseFloat(User.getUserWeightGoal());
+            float current = Float.parseFloat(User.getUserWeight());
+
+            x = x + 10;
+            // yAXESsin.add(new Entry(sinFunction,i));
+            // yAXEScos.add(new Entry(cosFunction,i));
+
+            yAXEStarget.add(new Entry(target,i));
+            yAXEScurrent.add(new Entry(current,i));
+
+
             xAXES.add(i, String.valueOf(x));
         }
+
         String[] xaxes = new String[xAXES.size()];
         for(int i=0; i<xAXES.size();i++){
             xaxes[i] = xAXES.get(i).toString();
@@ -61,13 +76,13 @@ public class WeightActivity extends AppCompatActivity {
 
         ArrayList<ILineDataSet> lineDataSets = new ArrayList<>();
 
-        LineDataSet lineDataSet1 = new LineDataSet(yAXEScos,"cos");
+        LineDataSet lineDataSet1 = new LineDataSet(yAXEStarget,"cos");
         lineDataSet1.setDrawCircles(false);
-        lineDataSet1.setColor(Color.BLUE);
+        lineDataSet1.setColor(Color.RED);
 
-        LineDataSet lineDataSet2 = new LineDataSet(yAXESsin,"sin");
+        LineDataSet lineDataSet2 = new LineDataSet(yAXEScurrent,"sin");
         lineDataSet2.setDrawCircles(false);
-        lineDataSet2.setColor(Color.RED);
+        lineDataSet2.setColor(Color.WHITE);
 
 
         lineDataSets.add(lineDataSet1);

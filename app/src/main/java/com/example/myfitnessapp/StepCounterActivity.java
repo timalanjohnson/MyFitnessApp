@@ -59,8 +59,10 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (running) {
-            textStepCount.setText(String.valueOf(event.values[0]));
-            int stepCount = Integer.parseInt(textStepCount.getText().toString());
+            textStepCount.setText(String.valueOf(event.values[0])); // Float
+
+            int stepCount = Math.round(event.values[0]);
+
             progressbarStepGoal.setProgress(stepCount);
         }
     }
