@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
     SensorManager sensorManager;
 
     TextView textStepCount;
+    ProgressBar progressbarStepGoal;
 
     boolean running = false;
 
@@ -26,9 +28,12 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textStepCount = findViewById(R.id.textStepCount);
+        progressbarStepGoal = findViewById(R.id.progressbarStepGoal);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        int stepGoal = Integer.parseInt(User.getUserStepGoal());
+        progressbarStepGoal.setMax(stepGoal);
     }
 
     @Override
@@ -55,6 +60,8 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
     public void onSensorChanged(SensorEvent event) {
         if (running) {
             textStepCount.setText(String.valueOf(event.values[0]));
+            int stepCount = Integer.parseInt(textStepCount.getText().toString());
+            progressbarStepGoal.setProgress(stepCount);
         }
     }
 
